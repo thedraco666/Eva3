@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Listado de softwares</title>
+    <link rel="stylesheet" href="stylecss.css"/>
+  </head>
+  <body>
+    <div class="contenedor">
+      <h1 id="titulo">Listado de softwares</h1>
+      <h2 id="subtitulo">Aqui puede anotar softwares</h2>
+      <button id="boton" class="btn bnt-info" >Cambiar color</button>
+    </div>
+    <script>
+        var h1=document.getElementById("titulo");
+        console.log(h1.innerHTML);
+        h1.style.color="purple";
+        h1.style.background="orange";
+        var h2=document.getElementById("subtitulo");
+        console.log(h2.innerHTML);
+        //h1.style.color="grey";
+        //h1.style.background="black";
+        var boton = document.getElementById("boton");
+        boton.onclick=function(){
+
+          h1.style.color="white";
+          h1.style.background="black";
+        }
+      </script>
+          <form >
+            <input id="software" type="text" placeholder="Ingresa Software" class="form-control my-2">
+            <input id="empresa" type="text" placeholder="Ingresa Empresa" class="form-control my-2">
+            <input id="usuario" type="text" placeholder="Ingresa Usuario" class="form-control my-2">
+            <button id="boton" type="reset" onclick="capturar();"  class="btn bnt-success">Ingresar</button>
+          </form>
+          </div>
+          <div class="container">
+            <table class="table-bordered" id="tabla">
+              <thead class="thead-inverse">
+                <tr>
+                  <th>|Software|</th>
+                  <th>|Empresa|</th>
+                  <th>|Usuario|</th>
+                </tr>
+              </thead>
+            </table>
+      </div>
+          <script >
+            function capturar(){
+              console.log("capturado");
+              function Persona(software, empresa, usuario,){
+                this.software=software;
+                this.empresa=empresa;
+                this.usuario=usuario;
+              }
+              var capturarsoftware=document.getElementById("software").value;
+              console.log(capturarsoftware);
+              var capturarempresa=document.getElementById("empresa").value;
+              console.log(capturarempresa);
+              var capturarusuario=document.getElementById("usuario").value;
+              console.log(capturarusuario);
+              //var suejeto= new Persona; //captura estatica
+              // varialble local var sujeto= new Persona(capturarsoftware, capturarempresa, capturarusuario,);
+              sujeto= new Persona(capturarsoftware, capturarempresa, capturarusuario,);//variable global
+              //console.log(sujeto);
+              agregar();
+            }
+            var basedatos=[];
+            function agregar(){
+              basedatos.push(sujeto)
+              console.log(basedatos);
+              document.getElementById("tabla").innerHTML += '<tbody><td>'+sujeto.software+'</td><td>'+sujeto.empresa+'</td><td>'+sujeto.usuario+'</td></tbody>';
+            };
+          </script>
+
+
+  </body>
+</html>
